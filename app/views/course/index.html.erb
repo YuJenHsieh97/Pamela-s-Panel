@@ -1,0 +1,24 @@
+<h1>Course Tab</h1>
+<br>
+
+<%= form_for @new_course, url: course_index_path, html: {class: "course_form"} do |f| %>
+    <h1> Course Name </h1>
+    <br>
+    <%= f.text_field :name %>
+    <br>
+    <h1> Course Hours</h1>
+    <br>
+    <%= f.text_field :hours %>
+    <br>
+    <br>
+    <%= f.submit "Create" %>
+    <% end %>
+
+    <div>
+      <% @course.each do |course| %>
+        <p> Course Name: <%= course.name %> </p>
+        <p> Course Length: <%= course.hours %> Hours </p>
+        <%= link_to "DELETE", '/course/' + course.id.to_s, method: :delete, class: "btn" %>
+        <%= link_to  "EDIT", edit_course_path(course) %>
+      <% end %>
+    </div>

@@ -1,0 +1,28 @@
+
+<h1>Edit Instructor Info</h1>
+<br>
+<br>
+<%= form_for @instructor  do |c| %>
+    <h1> First Name</h1>
+    <br>
+    <%= c.text_field :fName %>
+    <br>
+    <h1> Last Hours</h1>
+    <br>
+    <%= c.text_field :lName %>
+    <br>
+    <h1> Age </h1>
+    <br>
+    <%= c.text_field :age %>
+    <br>
+    <h1> Salary </h1>
+    <br>
+    <%= c.text_field :salary %>
+    <br>
+    <h1> Education </h1>
+    <br>
+    <%= c.text_field :education %>
+   
+    <br>
+    <%= c.submit "Update" %>
+  <% end %>

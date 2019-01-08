@@ -1,0 +1,18 @@
+
+<h1>Edit Course Info</h1>
+<br>
+<br>
+<%= form_for @course  do |c| %>
+    <h1> Course Name</h1>
+    <br>
+    <%= c.text_field :name %>
+    <h1> Course Hours</h1>
+    <br>
+    <%= c.text_field :hours %>
+  
+    <br>
+  
+  
+    <br>
+    <%= c.submit "Update" %>
+  <% end %>

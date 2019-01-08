@@ -1,0 +1,37 @@
+<h1>Instructor Tab</h1>
+<br>
+<%= form_for @new_instructor, url: instructor_index_path, html: {class: "instructor_form"} do |i| %>
+    <h1> First Name </h1>
+    <br>
+    <%= i.text_field :fName %>
+    <br> 
+    <h1> Last Name </h1>
+    <br>
+    <%= i.text_field :lName %>
+    <br>
+    <h1> Age</h1>
+    <br>
+    <%= i.text_field :age %>
+    <br>
+    <h1> Salary </h1>
+    <br>
+    <%= i.text_field :salary %>
+    <br>
+    <h1> Education </h1>
+    <br>
+    <%= i.text_field :education %>
+    <br>
+    <br>
+    <%= i.submit "Create" %>
+<% end %>
+
+<div>
+  <% @instructor.each do |i| %>
+    <p> First Name: <%= i.fName %> + " " + <%= i.lName %> </p>
+    <p> Age: <%= i.age %> </p>
+    <p> Salary: <%= i.salary %> </P>
+    <p> Education: <%= i.education %> </P>
+    <%= link_to "DELETE", '/instructor/' + i.id.to_s, method: :delete, class: "btn" %>
+    <%= link_to  "EDIT", edit_instructor_path(instructor) %>
+  <% end %>
+</div>
