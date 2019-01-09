@@ -20,16 +20,20 @@ class InstructorController < ApplicationController
       end
       
       def update
-        @instructor = Insturctor.find(params[:id])
+        @instructor = Instructor.find(params[:id])
         @instructor.update(instructor_params)
         @instructor.save
         redirect_to '/instructor'
       end
     
-      def destory
+      def destroy
         @instructor = Instructor.find(params[:id])
-        @instructor.destory
+        @instructor.destroy
         redirect_to '/instructor'
+      end
+
+      def edit
+        @instructor = Instructor.find(params[:id])
       end
       private
     
@@ -37,6 +41,4 @@ class InstructorController < ApplicationController
         params.require(:instructor).permit(:fName, :lName, :age, :salary, :education)
       end 
     
-      def edit
-      end
 end

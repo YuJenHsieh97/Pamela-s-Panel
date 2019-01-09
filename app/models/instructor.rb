@@ -1,3 +1,3 @@
 class Instructor < ApplicationRecord
-    belongs_to :Cohort
+    has_and_belongs_to_many :Cohorts
 end

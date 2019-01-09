@@ -1,1 +1,28 @@
 <h1>Cohort Tab</h1>
+<br>
+<%= form_for @new_cohort, url: cohort_index_path, html: {class: "cohort_form"} do |i| %>
+    <h1> Name </h1>
+    <br>
+    <%= i.text_field :name %>
+    <br> 
+    <h1> Start Date </h1>
+    <br>
+    <%= i.text_field :sDate %>
+    <br>
+    <h1> End Date </h1>
+    <br>
+    <%= i.text_field :eDate %>
+    <br>
+    <br>
+    <%= i.submit "Create" %>
+<% end %>
+
+<div>
+  <% @cohort.each do |i| %>
+    <p> Name: <%= i.name %></p>
+    <p> Start Date: <%= i.sDate %></p>
+    <p> End Date: <%= i.eDate %> </p>
+    <%= link_to "DELETE", '/cohort/' + i.id.to_s, method: :delete, class: "btn" %>
+    <%= link_to  "EDIT", edit_cohort_path(@cohort) %>
+  <% end %>
+</div>

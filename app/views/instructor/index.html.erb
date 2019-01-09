@@ -27,11 +27,12 @@
 
 <div>
   <% @instructor.each do |i| %>
-    <p> First Name: <%= i.fName %> + " " + <%= i.lName %> </p>
+    <p> First Name: <%= i.fName %></p>
+    <p> Last Name: <%= i.lName %></p>
     <p> Age: <%= i.age %> </p>
     <p> Salary: <%= i.salary %> </P>
     <p> Education: <%= i.education %> </P>
     <%= link_to "DELETE", '/instructor/' + i.id.to_s, method: :delete, class: "btn" %>
-    <%= link_to  "EDIT", edit_instructor_path(instructor) %>
+    <%= link_to  "EDIT", edit_instructor_path(@instructor) %>
   <% end %>
 </div>

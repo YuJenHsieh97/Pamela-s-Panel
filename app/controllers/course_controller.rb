@@ -1,4 +1,5 @@
 class CourseController < ApplicationController
+
   def index
     @course = Course.all.reverse
     @new_course = Course.new

@@ -1,0 +1,25 @@
+
+<h1>Edit Student Info</h1>
+<br>
+<br>
+<%= form_for @student do |c| %>
+    <h1> Student First Name</h1>
+    <br>
+    <%= c.text_field :fName %>
+    <h1> Student Last Name</h1>
+    <br>
+    <%= c.text_field :lName %>
+    <h1> Age</h1>
+    <br>
+    <%= c.text_field :age %>
+    <br>
+    <h1> Education </h1>
+    <br>
+    <%= c.text_field :education %>
+  
+    <br>
+  
+  
+    <br>
+    <%= c.submit "Update" %>
+  <% end %>
