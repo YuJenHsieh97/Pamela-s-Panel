@@ -18,10 +18,15 @@
 <% end %>
 
 <div>
-  <% @cohort.each do |i| %>
-    <p> Name: <%= i.name %></p>
-    <p> Start Date: <%= i.sDate %></p>
-    <p> End Date: <%= i.eDate %> </p>
+
+<% @cohort.each do |i| %>
+    <div class="ui relaxed grid">
+      <div class="three column row">
+        <div class="column"><p> Name: <%= i.name %></p></div>
+        <div class="column"><p> Start Date: <%= i.sDate %></p></div>
+        <div class='column'><p> End Date: <%= i.eDate %> </p></div>
+      </div>
+    </div>
     <%= link_to "DELETE", '/cohort/' + i.id.to_s, method: :delete, class: "btn" %>
     <%= link_to  "EDIT", edit_cohort_path(@cohort) %>
   <% end %>

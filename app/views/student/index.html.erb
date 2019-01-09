@@ -18,6 +18,8 @@
     <%= i.text_field :education %>
     <br>
     <br>
+    <%= i.collection_select(:cohort_id, Cohort.all, :id, :name, :sDate, :eDate) %>
+    
     <%= i.submit "Create" %>
 <% end %>
 
