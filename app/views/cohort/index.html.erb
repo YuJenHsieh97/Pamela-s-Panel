@@ -1,25 +1,24 @@
-<h3>Cohort Tab</h3>
-<br>
 <%= form_for @new_cohort, url: cohort_index_path, html: {class: "cohort_form"} do |i| %>
-    <div class="ui relaxed grid">
-      <div class="two column row">
-        <div class="column"><h1> Name </h1></div>
-        <br>
-        <div class="column"><%= i.text_field :name %></div>
-        <br> 
-        <div class="column"><h1> Start Date </h1></div>
-        <br>
-        <div class="column"><%= i.text_field :sDate %></div>
-        <br>
-        <div class="column"><h1> End Date </h1></div>
-        <br>
-        <div class="column"><%= i.text_field :eDate %></div>
-        <br>
-        <br>
-        <div class="column"><%= i.submit "Create" %></div>
-      </div>
+  <div class="ui form">
+    <h4 class="ui dividing header">Cohort</h4>
+    <div class="field">
+      <label>Cohort</label>
+      <%= i.text_field :name %>
     </div>
-    <% end %>
+    <div class="field">
+      <label>Start Date</label>
+      <%= i.text_field :sDate %>
+    </div>
+    <div class="field">
+      <label> End Date</label>
+       <%= i.text_field :eDate %>
+    </div>
+  </div>
+  <br>
+  <button class="ui button" type='<%= i.submit %>'>Create</button>
+</form>
+        
+<% end %>
 
 <div>
   <table class="ui celled table">
