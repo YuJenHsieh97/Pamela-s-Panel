@@ -1,24 +1,39 @@
-<h1>Course Tab</h1>
+<h3>Course Tab</h3>
 <br>
 
 <%= form_for @new_course, url: course_index_path, html: {class: "course_form"} do |f| %>
-    <h1> Course Name </h1>
-    <br>
-    <%= f.text_field :name %>
-    <br>
-    <h1> Course Hours</h1>
-    <br>
-    <%= f.text_field :hours %>
-    <br>
-    <br>
-    <%= f.submit "Create" %>
+    <div class="ui relaxed grid">
+      <div class="two column row">
+        <div class="column"><h1> Course Name </h1></div>
+        <br>
+        <div class="column"><%= f.text_field :name %></div>
+        <br>
+        <div class="column"><h1> Course Hours</h1></div>
+        <br>
+        <div class="column"><%= f.text_field :hours %></div>
+        <br>
+        <br>
+        <div class="column"><%= f.submit "Create" %></div>
+      </div>
+    </div>
     <% end %>
 
     <div>
       <% @course.each do |course| %>
-        <p> Course Name: <%= course.name %> </p>
-        <p> Course Length: <%= course.hours %> Hours </p>
-        <%= link_to "DELETE", '/course/' + course.id.to_s, method: :delete, class: "btn" %>
-        <%= link_to  "EDIT", edit_course_path(course) %>
+        <table class="ui celled table">
+            <thead>
+            <tr><th> Course Name</th>
+            <th>Course Length</th>
+            <th></th>
+            <th></th>
+            </tr></thead>
+          <tbody>
+            <tr>
+              <td data-label="Course Name"><%= course.name %></td>
+              <td data-label="Course Length"> <%= course.hours %> Hours</td>
+              <td data-label=""><%= link_to "DELETE", '/course/' + course.id.to_s, method: :delete, class: "btn" %></td>
+              <td data-label=""><%= link_to  "EDIT", edit_course_path(course) %></td>
+          </tbody>
+        </table>
       <% end %>
     </div>

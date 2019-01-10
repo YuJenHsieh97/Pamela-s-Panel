@@ -6,11 +6,12 @@ class StudentController < ApplicationController
     
       def show
         @student = Student.find(params[:id])
+        @student = Student.cohorts(Cohort.find(params[:cohort]))
       end
       
       def create
         @temp = Student.create(student_params)
-        
+        @temp.cohorts<<(Cohort.find(params[:cohort]))
         if @temp.valid?
           flash[:notice] = "Course CREATED!"
         else

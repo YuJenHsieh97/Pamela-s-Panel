@@ -1,33 +1,37 @@
-<h1>Cohort Tab</h1>
+<h3>Cohort Tab</h3>
 <br>
 <%= form_for @new_cohort, url: cohort_index_path, html: {class: "cohort_form"} do |i| %>
-    <h1> Name </h1>
-    <br>
-    <%= i.text_field :name %>
-    <br> 
-    <h1> Start Date </h1>
-    <br>
-    <%= i.text_field :sDate %>
-    <br>
-    <h1> End Date </h1>
-    <br>
-    <%= i.text_field :eDate %>
-    <br>
-    <br>
-    <%= i.submit "Create" %>
-<% end %>
+    <div class="ui relaxed grid">
+      <div class="two column row">
+        <div class="column"><h1> Name </h1></div>
+        <br>
+        <div class="column"><%= i.text_field :name %></div>
+        <br> 
+        <div class="column"><h1> Start Date </h1></div>
+        <br>
+        <div class="column"><%= i.text_field :sDate %></div>
+        <br>
+        <div class="column"><h1> End Date </h1></div>
+        <br>
+        <div class="column"><%= i.text_field :eDate %></div>
+        <br>
+        <br>
+        <div class="column"><%= i.submit "Create" %></div>
+      </div>
+    </div>
+    <% end %>
 
 <div>
 
 <% @cohort.each do |i| %>
     <div class="ui relaxed grid">
-      <div class="three column row">
+      <div class="five column row">
         <div class="column"><p> Name: <%= i.name %></p></div>
         <div class="column"><p> Start Date: <%= i.sDate %></p></div>
         <div class='column'><p> End Date: <%= i.eDate %> </p></div>
+        <div class='column'><%= link_to "DELETE", '/cohort/' + i.id.to_s, method: :delete, class: "btn" %></div>
+        <div class='column'><%= link_to  "EDIT", edit_cohort_path(@cohort) %></div>
+        </div>
       </div>
-    </div>
-    <%= link_to "DELETE", '/cohort/' + i.id.to_s, method: :delete, class: "btn" %>
-    <%= link_to  "EDIT", edit_cohort_path(@cohort) %>
   <% end %>
 </div>
