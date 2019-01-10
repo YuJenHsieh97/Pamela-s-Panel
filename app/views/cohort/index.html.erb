@@ -22,16 +22,22 @@
     <% end %>
 
 <div>
-
-<% @cohort.each do |i| %>
-    <div class="ui relaxed grid">
-      <div class="five column row">
-        <div class="column"><p> Name: <%= i.name %></p></div>
-        <div class="column"><p> Start Date: <%= i.sDate %></p></div>
-        <div class='column'><p> End Date: <%= i.eDate %> </p></div>
-        <div class='column'><%= link_to "DELETE", '/cohort/' + i.id.to_s, method: :delete, class: "btn" %></div>
-        <div class='column'><%= link_to  "EDIT", edit_cohort_path(@cohort) %></div>
-        </div>
-      </div>
+  <table class="ui celled table">
+    <thead>
+    <tr><th> Cohort </th>
+    <th>Start</th>
+    <th>End</th>
+    <th></th>
+    <th></th>
+    </tr></thead>
+  <tbody>
+  <% @cohort.each do |i| %>
+    <tr>
+      <td data-label="Cohort"><%= i.name %></td>
+      <td data-label="Start"><%= i.sDate %></td>
+      <td data-label="End"><%= i.eDate %></td>
+      <td data-label=""><%= link_to "DELETE", '/cohort/' + i.id.to_s, method: :delete, class: "btn" %></td>
+      <td data-label=""><%= link_to  "EDIT", edit_cohort_path(@cohort) %></td>
+    </tr>
   <% end %>
 </div>

@@ -17,23 +17,25 @@
       </div>
     </div>
     <% end %>
+    <br>
 
-    <div>
-      <% @course.each do |course| %>
-        <table class="ui celled table">
-            <thead>
-            <tr><th> Course Name</th>
-            <th>Course Length</th>
-            <th></th>
-            <th></th>
-            </tr></thead>
-          <tbody>
-            <tr>
-              <td data-label="Course Name"><%= course.name %></td>
-              <td data-label="Course Length"> <%= course.hours %> Hours</td>
-              <td data-label=""><%= link_to "DELETE", '/course/' + course.id.to_s, method: :delete, class: "btn" %></td>
-              <td data-label=""><%= link_to  "EDIT", edit_course_path(course) %></td>
-          </tbody>
-        </table>
-      <% end %>
-    </div>
+<div>
+  <table class="ui celled table">
+    <thead>
+      <tr><th> Course Name</th>
+      <th>Course Length</th>
+      <th></th>
+      <th></th>
+      </tr></thead>
+      <tbody>
+        <% @course.each do |course| %>
+          <tr>
+          <td data-label="Course Name"><%= course.name %></td>
+          <td data-label="Course Length"> <%= course.hours %> Hours</td>
+          <td data-label=""><%= link_to "DELETE", '/course/' + course.id.to_s, method: :delete, class: "btn" %></td>
+          <td data-label=""><%= link_to  "EDIT", edit_course_path(course) %></td>
+          </tr>
+        <% end %>
+      </tbody>
+  </table>
+</div>

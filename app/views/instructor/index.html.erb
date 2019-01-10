@@ -26,13 +26,28 @@
 <% end %>
 
 <div>
-  <% @instructor.each do |i| %>
-    <p> First Name: <%= i.fName %></p>
-    <p> Last Name: <%= i.lName %></p>
-    <p> Age: <%= i.age %> </p>
-    <p> Salary: <%= i.salary %> </P>
-    <p> Education: <%= i.education %> </P>
-    <%= link_to "DELETE", '/instructor/' + i.id.to_s, method: :delete, class: "btn" %>
-    <%= link_to  "EDIT", edit_instructor_path(@instructor) %>
-  <% end %>
-</div>
+  <table class="ui celled table">
+    <thead>
+    <tr><th> First Name </th>
+    <th>Last Name</th>
+    <th>Age</th>
+    <th>Salary</th>
+    <th>Education</th>
+    <th></th>
+    <th></th>
+    </tr></thead>
+  <tbody>
+    <% @instructor.each do |i| %>
+      <tr>
+        <td data-label="First Name"><%= i.fName %></td>
+        <td data-label="Last Name"><%= i.lName %></td>
+        <td data-label="Age"><%= i.age %> </td>
+        <td data-label="Salary"><%= i.salary %> </td>
+        <td data-label="Education"><%= i.education %> </td>
+        <td data-label=""><%= link_to "DELETE", '/instructor/' + i.id.to_s, method: :delete, class: "btn" %></td>
+        <td data-label="""><%= link_to  "EDIT", edit_instructor_path(@instructor) %></td>
+      </tr>
+    <% end %>
+  </div>
+
+ 

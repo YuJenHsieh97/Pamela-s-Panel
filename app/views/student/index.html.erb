@@ -29,18 +29,28 @@
 <% end %>
 
 <div>
-  <% @student.each do |i| %>
-    <div class="ui relaxed centered grid">
-      <div class="seven column row">
-        <div class="column"><p> First Name: <%= i.fName %></p></div>
-        <div class="column"><p> Last Name: <%= i.lName %></p></div>
-        <div class="column"><p> Age: <%= i.age %> </p></div>
-        <div class="column"><p> Education: <%= i.education %> </p></div>
-        <div class="column"><p> Cohort: <%= i.cohorts.first.name %> </p></div>
-        <br>
-        <div class="column"><%= link_to "DELETE", '/student/' + i.id.to_s, method: :delete, class: "btn" %></div>
-        <div class="column"><%= link_to  "EDIT", edit_student_path(@student) %></div>
-        </div>
-      </div>
-  <% end %>
+    <table class="ui celled table">
+      <thead>
+      <tr><th> First Name </th>
+      <th> Last Name </th>
+      <th> Age </th>
+      <th> Education </th>
+      <th> Cohort </th>
+      <th></th>
+      <th></th>
+      </tr></thead>
+      <tbody>
+        <% @student.each do |i| %>
+          <tr>
+          <td data-label="First Name"><%= i.fName %></td>
+          <td data-label="Last Name"><%= i.lName %></td>
+          <td data-label="Age"><%= i.age %></td>
+          <td data-label="Education"><%= i.education %></td>
+          <td data-label="Cohort"><%= i.cohorts.first.name %></td>
+          <td data-label=""><%= link_to "DELETE", '/student/' + i.id.to_s, method: :delete, class: "btn" %></td>
+          <td data-label=""><%= link_to  "EDIT", edit_student_path(@student) %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
 </div>
