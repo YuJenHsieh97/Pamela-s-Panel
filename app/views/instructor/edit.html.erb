@@ -1,28 +1,28 @@
-
-<h3>Edit Instructor Info</h3>
-<br>
-<br>
 <%= form_for @instructor  do |c| %>
-    <h1> First Name</h1>
+  <div class="ui form">
+    <h4 class="ui dividing header">Edit Instructor: <%= @instructor.fName %> <%= @instructor.lName %></h4>
+    <div class='field'>
+      <label> First Name</label>
+      <%= c.text_field :fName %>
+    </div>
+    <div class='field'>
+      <label> Last Hours</label>
+      <%= c.text_field :lName %>
+    </div>
+    <div class='field'>
+      <label> Age </label>
+      <%= c.text_field :age %>
+    </div>
+    <div class='field'>
+      <label> Salary </label>
+      <%= c.text_field :salary %>
+    </div>
+    <div class='field'>
+      <label> Education </label>
+      <%= c.text_field :education %>
+    </div>
     <br>
-    <%= c.text_field :fName %>
+    <button class="ui button" type='<%= c.submit %>'>Update</button>
     <br>
-    <h1> Last Hours</h1>
     <br>
-    <%= c.text_field :lName %>
-    <br>
-    <h1> Age </h1>
-    <br>
-    <%= c.text_field :age %>
-    <br>
-    <h1> Salary </h1>
-    <br>
-    <%= c.text_field :salary %>
-    <br>
-    <h1> Education </h1>
-    <br>
-    <%= c.text_field :education %>
-   
-    <br>
-    <%= c.submit "Update" %>
   <% end %>

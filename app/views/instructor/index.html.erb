@@ -1,31 +1,38 @@
-<h3>Instructor Tab</h3>
-<br>
 <%= form_for @new_instructor, url: instructor_index_path, html: {class: "instructor_form"} do |i| %>
-    <h1> First Name </h1>
-    <br>
-    <%= i.text_field :fName %>
-    <br> 
-    <h1> Last Name </h1>
-    <br>
+  <div class="ui form">
+    <h4 class="ui dividing header"> Create Instructor</h4>
+    <div class='field'>
+      <label> First Name </label>
+      <%= i.text_field :fName %>
+    </div>
+    <div class='field'>
+    <label> Last Name </label>
     <%= i.text_field :lName %>
-    <br>
-    <h1> Age</h1>
-    <br>
+    </div>
+    <div class='field'>
+    <label> Age</label>
     <%= i.text_field :age %>
-    <br>
-    <h1> Salary </h1>
-    <br>
+    </div>
+    <div class='field'>
+    <label> Salary </label>
     <%= i.text_field :salary %>
-    <br>
-    <h1> Education </h1>
-    <br>
+    </div>
+    <div class='field'>
+    <label> Education </label>
     <%= i.text_field :education %>
+    </div>
+    <div class="field">
+          <label> Cohort</label>
+          <%= (select_tag "cohort", options_from_collection_for_select(Cohort.all, "id", "name"))%>
+        </div>
+    <br>
+    <button class="ui green button" type='<%= i.submit %>'>Create</button>
     <br>
     <br>
-    <%= i.submit "Create" %>
 <% end %>
 
 <div>
+<h4 class="ui dividing header">Instructors</h4>
   <table class="ui celled table">
     <thead>
     <tr><th> First Name </th>
@@ -33,6 +40,7 @@
     <th>Age</th>
     <th>Salary</th>
     <th>Education</th>
+    <th> Cohort </th>
     <th></th>
     <th></th>
     </tr></thead>
@@ -44,10 +52,10 @@
         <td data-label="Age"><%= i.age %> </td>
         <td data-label="Salary"><%= i.salary %> </td>
         <td data-label="Education"><%= i.education %> </td>
-        <td data-label=""><%= link_to "DELETE", '/instructor/' + i.id.to_s, method: :delete, class: "btn" %></td>
+        <td data-label="Cohort"><%= i.cohorts.first.name %></td>
         <td data-label="""><%= link_to  "EDIT", edit_instructor_path(@instructor) %></td>
+        <td data-label=""><%= link_to "DELETE", '/instructor/' + i.id.to_s, method: :delete, class: "btn" %></td>
       </tr>
     <% end %>
   </div>
 
- 

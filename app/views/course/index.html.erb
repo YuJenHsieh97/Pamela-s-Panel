@@ -1,29 +1,34 @@
-<h3>Course Tab</h3>
-<br>
-
 <%= form_for @new_course, url: course_index_path, html: {class: "course_form"} do |f| %>
-    <div class="ui relaxed grid">
-      <div class="two column row">
-        <div class="column"><h1> Course Name </h1></div>
+    <div class="ui form">
+   <h4 class="ui dividing header">Create Course</h4>
+     <div class='field'>
+        <div class="field">
+            <div class="field">
+            <label> Course Name </label>
+            <%= f.text_field :name %>
+            </div>
+            <div class="field">
+            <label> Course Hours</label>
+            <%= f.text_field :hours %>
+            </div>
+            <div class="field">
+          <label> Cohort </label>
+          <%= (select_tag "cohort", options_from_collection_for_select(Cohort.all, "id", "name"))%>
+        </div>
         <br>
-        <div class="column"><%= f.text_field :name %></div>
-        <br>
-        <div class="column"><h1> Course Hours</h1></div>
-        <br>
-        <div class="column"><%= f.text_field :hours %></div>
-        <br>
-        <br>
-        <div class="column"><%= f.submit "Create" %></div>
+        <button class="ui green button" type='<%= f.submit %>'>Create</button>
       </div>
     </div>
     <% end %>
     <br>
 
 <div>
+   <h4 class="ui dividing header">Courses</h4>
   <table class="ui celled table">
     <thead>
       <tr><th> Course Name</th>
       <th>Course Length</th>
+      <th> Cohort </th>
       <th></th>
       <th></th>
       </tr></thead>
@@ -32,8 +37,9 @@
           <tr>
           <td data-label="Course Name"><%= course.name %></td>
           <td data-label="Course Length"> <%= course.hours %> Hours</td>
-          <td data-label=""><%= link_to "DELETE", '/course/' + course.id.to_s, method: :delete, class: "btn" %></td>
+          <td data-label="Cohort"><%= course.cohorts.first.name %></td>
           <td data-label=""><%= link_to  "EDIT", edit_course_path(course) %></td>
+          <td data-label=""><%= link_to "DELETE", '/course/' + course.id.to_s, method: :delete, class: "btn" %></td>
           </tr>
         <% end %>
       </tbody>

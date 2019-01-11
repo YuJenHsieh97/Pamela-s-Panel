@@ -1,18 +1,14 @@
-
-<h3>Edit Course Info</h3>
-<br>
-<br>
 <%= form_for @course  do |c| %>
-    <h1> Course Name</h1>
-    <br>
+<div class="ui form">
+   <h4 class="ui dividing header">Edit Course: <%= @course.name %></h4>
+   <div class='field'>
+     <label> Course Name</label>
     <%= c.text_field :name %>
-    <h1> Course Hours</h1>
-    <br>
+</div>
+   <div class='field'>
+    <label> Course Hours</label>
     <%= c.text_field :hours %>
-  
+   </div>
     <br>
-  
-  
-    <br>
-    <%= c.submit "Update" %>
+   <button class="ui button" type='<%= c.submit %>'>Update</button>
   <% end %>

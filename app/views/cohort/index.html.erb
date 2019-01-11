@@ -1,26 +1,31 @@
 <%= form_for @new_cohort, url: cohort_index_path, html: {class: "cohort_form"} do |i| %>
   <div class="ui form">
-    <h4 class="ui dividing header">Cohort</h4>
+    <h4 class="ui dividing header">Create Cohort</h4>
     <div class="field">
       <label>Cohort</label>
       <%= i.text_field :name %>
     </div>
     <div class="field">
-      <label>Start Date</label>
-      <%= i.text_field :sDate %>
+      <label> Duration(Start Date/End Date) </label>
+    <div class="two fields">
+      <div class="field">
+        <%= i.text_field :sDate %>
+      </div>
+      <div class="field">
+        <%= i.text_field :eDate %>
+      </div>
     </div>
-    <div class="field">
-      <label> End Date</label>
-       <%= i.text_field :eDate %>
-    </div>
-  </div>
+</div>
   <br>
-  <button class="ui button" type='<%= i.submit %>'>Create</button>
+  <button class="ui green button" type='<%= i.submit %>'>Create</button>
+  <br>
+  <br>
 </form>
-        
+
 <% end %>
 
 <div>
+ <h4 class="ui dividing header">Cohorts</h4>
   <table class="ui celled table">
     <thead>
     <tr><th> Cohort </th>
@@ -35,8 +40,8 @@
       <td data-label="Cohort"><%= i.name %></td>
       <td data-label="Start"><%= i.sDate %></td>
       <td data-label="End"><%= i.eDate %></td>
-      <td data-label=""><%= link_to "DELETE", '/cohort/' + i.id.to_s, method: :delete, class: "btn" %></td>
       <td data-label=""><%= link_to  "EDIT", edit_cohort_path(@cohort) %></td>
+      <td data-label=""><%= link_to "DELETE", '/cohort/' + i.id.to_s, method: :delete, class: "btn" %></td>
     </tr>
   <% end %>
 </div>

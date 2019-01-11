@@ -8,16 +8,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" />
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     </head>
-    
+
     <body>
-    
-    
-    <div id="flash">
-    <% flash.each do |key, value| %>
-      <div class="flash <%= key %>"><%= value %></div>
-      <% end %>
-      </div>
-      
+    <div class="ui secondary pointing menu">
+    <%= render "layouts/nav" %>
+    </div>
+
       <div class="ui grid">
       <div class="two wide column" class='col'>
       <div class="ui vertical pointing menu" class="vertically fitted item">
@@ -27,21 +23,21 @@
       <a class='item' href='/student'>Student</a>
       <a class='item' href='/course'>Course</a>
       </div>
-      </div>  
+      </div>
       <div class="fourteen wide stretched column">
       <div class="ui segment">
+    <div id="flash">
+    <% flash.each do |key, value| %>
+      <div class="flash <%= key %>"><%= value %></div>
+      <% end %>
+      </div>
       <%= yield %>
       </div>
       </div>
       </div>
-      
-      <% if signed_in? %>
-      Signed in as: <%= current_user.email %>
-      <%= button_to 'Sign out', sign_out_path, method: :delete %>
-      <% else %>
-      <%= link_to 'Sign in', sign_in_path %>
-      <% end %>
-      
+
+
+
       <script src="https://code.jquery.com/jquery-3.1.1.min.js"
       integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
       crossorigin="anonymous"></script>

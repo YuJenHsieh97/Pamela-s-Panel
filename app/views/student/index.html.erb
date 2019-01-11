@@ -1,34 +1,37 @@
-<h3>Student Tab</h3>
 <%= form_for @new_student, url: student_index_path, html: {class: "student_form"} do |i| %>
-    <div class="ui relaxed grid">
-      <div class="two column row">
-        <div class="column"><h1> First Name </h1></div>
+  <div class="ui form">
+   <h4 class="ui dividing header">Create Student</h4>
+     <div class='field'>
+        <div class="field">
+          <label> First Name </label>
+          <%= i.text_field :fName %>
+        </div>
+        <div class="field">
+          <label> Last Name </label>
+          <%= i.text_field :lName %>
+        </div>
+        <div class="field">
+          <label> Age</label>
+          <%= i.text_field :age %>
+        </div>
+        <div class="field">
+          <label> Education </label>
+          <%= i.text_field :education %>
+        </div>
+        <div class="field">
+          <label> Cohort </label>
+          <%= (select_tag "cohort", options_from_collection_for_select(Cohort.all, "id", "name"))%>
+        </div>
         <br>
-        <div class="column"><%= i.text_field :fName %></div>
-        <br> 
-        <div class="column"><h1> Last Name </h1></div>
-        <br>
-        <div class="column"><%= i.text_field :lName %></div>
-        <br>
-        <div class="column"><h1> Age</h1></div>
-        <br>
-        <div class="column"><%= i.text_field :age %></div>
-        <br>
-        <div class="column"><h1> Education </h1></div>
-        <br>
-        <div class="column"><%= i.text_field :education %></div>
-        <br>
-        <div class="column"><h1> Cohort </h1></div>
-        <br>
-        <div class="column"><%= (select_tag "cohort", options_from_collection_for_select(Cohort.all, "id", "name"))%></div>
+        <button class="ui green button" type='<%= i.submit %>'>Create</button>
         <br>
         <br>
-        <div class="column"><%= i.submit "Create" %></div>
       </div>
     </div>
 <% end %>
 
 <div>
+   <h4 class="ui dividing header">Students</h4>
     <table class="ui celled table">
       <thead>
       <tr><th> First Name </th>
@@ -47,8 +50,8 @@
           <td data-label="Age"><%= i.age %></td>
           <td data-label="Education"><%= i.education %></td>
           <td data-label="Cohort"><%= i.cohorts.first.name %></td>
-          <td data-label=""><%= link_to "DELETE", '/student/' + i.id.to_s, method: :delete, class: "btn" %></td>
           <td data-label=""><%= link_to  "EDIT", edit_student_path(@student) %></td>
+          <td data-label=""><%= link_to "DELETE", '/student/' + i.id.to_s, method: :delete, class: "btn" %></td>
           </tr>
         <% end %>
       </tbody>

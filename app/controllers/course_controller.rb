@@ -7,18 +7,18 @@ class CourseController < ApplicationController
 
   def show
     @course = Course.find(params[:id])
+    @course = Course.cohorts(Cohort.find(params[:cohort]))
   end
-  
+
   def create
     @temp = Course.create(course_params)
+    @temp.cohorts<<(Cohort.find(params[:cohort]))
     if @temp.valid?
-      flash[:notice] = "Course CREATED!"
-    else
-      flash[:notice] = "YOU TYPED TOO MUCH!"
+      flash[:notice] = "Course Created"
     end
     redirect_to '/course'
   end
-  
+
   def update
     @course = Course.find(params[:id])
     @course.update(course_params)
@@ -40,7 +40,7 @@ class CourseController < ApplicationController
 
   def course_params
     params.require(:course).permit(:name, :hours)
-  end 
+  end
 
 
 

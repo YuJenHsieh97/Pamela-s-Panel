@@ -3,30 +3,28 @@ class StudentController < ApplicationController
         @student = Student.all.reverse
         @new_student = Student.new
       end
-    
+
       def show
         @student = Student.find(params[:id])
         @student = Student.cohorts(Cohort.find(params[:cohort]))
       end
-      
+
       def create
         @temp = Student.create(student_params)
         @temp.cohorts<<(Cohort.find(params[:cohort]))
         if @temp.valid?
-          flash[:notice] = "Course CREATED!"
-        else
-          flash[:notice] = "YOU TYPED TOO MUCH!"
+          flash[:notice] = "Student Created"
         end
         redirect_to '/student'
       end
-      
+
       def update
         @student = Student.find(params[:id])
         @student.update(student_params)
         @student.save
         redirect_to '/student'
       end
-    
+
       def destroy
         @student = Student.find(params[:id])
         @student.destroy
@@ -37,8 +35,8 @@ class StudentController < ApplicationController
         @student = Student.find(params[:id])
       end
       private
-    
+
       def student_params
         params.require(:student).permit(:fName, :lName, :age, :education)
-      end 
+      end
 end

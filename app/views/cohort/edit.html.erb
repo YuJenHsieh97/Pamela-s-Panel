@@ -1,21 +1,20 @@
-
-<h3>Edit Cohort Info</h3>
-<br>
-<br>
 <%= form_for @cohort  do |c| %>
-    <h1> Cohort Name</h1>
-    <br>
+<div class="ui form">
+ <h4 class="ui dividing header">Edit Cohort: <%= @cohort.name %></h4>
+   <div class='field'>
+    <label>Cohort</label>
     <%= c.text_field :name %>
-    <h1> Start Date</h1>
-    <br>
-    <%= c.text_field :sDate %>
-    <h1> End Date</h1>
-    <br>
-    <%= c.text_field :eDate %>
-  
-    <br>
-  
-  
-    <br>
-    <%= c.submit "Update" %>
+   </div>
+   <div class="field">
+     <label> Duration(Start Date/End Date)</label>
+   <div class="two fields">
+   <div class="field">
+     <%= c.text_field :sDate %>
+   </div>
+   <div class="field">
+     <%= c.text_field :eDate %>
+   </div>
+  </div>
+</div>
+<button class="ui button" type='<%= c.submit %>'>Update</button>
   <% end %>
